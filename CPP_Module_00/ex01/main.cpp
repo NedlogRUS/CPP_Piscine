@@ -9,12 +9,16 @@ using std::getline;
 int main()
 {
     std::string input = "";
-    cin >> input;
-    if (input.compare("ADD") == 0)
-    {
-        cout << "OK" << endl;
+
+    while(true) {
+        cin >> input;
+        if (input.compare("ADD") == 0) {
+            cout << "OK" << endl;
+        }
+        else if (input.compare("EXIT") == 0)
+            break;
+        else
+            cout << "ERROR" << endl;
     }
-    else
-        cout << "ERROR" << endl;
     return (0);
 }
