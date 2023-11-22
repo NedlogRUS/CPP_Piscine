@@ -1,11 +1,20 @@
 #ifndef CPP_PHONEBOOK_HPP
 #define CPP_PHONEBOOK_HPP
 
-#include <Contact.hpp>
+#include "Contact.hpp"
 
-class PhoneBook {
+class PhoneBook
+{
+private:
+    Contact contacts[8];
+    int contactCount;
 
+public:
+    PhoneBook(); // Constructor
+
+    void addContact(const Contact &newContact);
+    void displayContacts() const;
+    void displayContact(int index) const;
 };
-
 
 #endif //CPP_PHONEBOOK_HPP
