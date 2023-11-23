@@ -10,7 +10,7 @@ private:
     int contactCount;
 
 public:
-    PhoneBook(); // Constructor
+    PhoneBook();
 
     void addContact(const Contact &newContact);
     void displayContacts() const;

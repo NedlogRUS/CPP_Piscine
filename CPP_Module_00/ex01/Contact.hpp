@@ -15,14 +15,12 @@ private:
 public:
     Contact(); // Constructor
 
-    // Getter functions for private member variables
     std::string getFirstName() const;
     std::string getLastName() const;
     std::string getNickname() const;
     std::string getPhoneNumber() const;
     std::string getDarkestSecret() const;
 
-    // Setter functions for private member variables
     void setFirstName(const std::string &firstName);
     void setLastName(const std::string &lastName);
     void setNickname(const std::string &nickname);

@@ -1,4 +1,3 @@
-// PhoneBook.cpp
 #include "PhoneBook.hpp"
 #include <iostream>
 #include <iomanip>
@@ -24,11 +23,9 @@ void PhoneBook::addContact(const Contact &newContact)
 
 void PhoneBook::displayContacts() const
 {
-    // Display the header
-    std::cout << std::setw(10) << "Index" << std::setw(10) << "First Name"
-              << std::setw(10) << "Last Name" << std::setw(10) << "Nickname" << std::endl;
+    std::cout << std::setw(10) << "|   Index  |" << std::setw(10) << "First Name|"
+              << std::setw(10) << " Last Name|" << std::setw(10) << " Nickname |" << std::endl;
 
-    // Display each contact
     for (int i = 0; i < contactCount; ++i)
     {
         std::cout << std::setw(10) << i << std::setw(10) << contacts[i].getFirstName()
@@ -40,7 +37,6 @@ void PhoneBook::displayContact(int index) const
 {
     if (index >= 0 && index < contactCount)
     {
-        // Display contact information
         std::cout << "First Name: " << contacts[index].getFirstName() << std::endl;
         std::cout << "Last Name: " << contacts[index].getLastName() << std::endl;
         std::cout << "Nickname: " << contacts[index].getNickname() << std::endl;

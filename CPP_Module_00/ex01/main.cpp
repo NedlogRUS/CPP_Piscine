@@ -6,6 +6,7 @@ using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
+using std::getline;
 
 int main()
 {
@@ -13,11 +14,12 @@ int main()
 
     while (true)
     {
-        cout << "Enter command (ADD, SEARCH, EXIT): ";
+        cout << "Enter command (ADD, SEARCH, EXIT): " << endl;
         string command;
-        cin >> command;
+//        cin >> command;
+        getline (cin,command);
 
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         if (command == "ADD")
         {
             Contact newContact;
@@ -43,9 +45,10 @@ int main()
             newContact.setPhoneNumber(phoneNumber);
 
             cout << "Enter darkest secret: ";
-            cin.ignore(); // Ignore the newline character left in the buffer
+//            cin.ignore(); // Ignore the newline character left in the buffer
             string darkestSecret;
-            getline(cin, darkestSecret);
+//            getline(cin, darkestSecret);
+            cin >> darkestSecret;
             newContact.setDarkestSecret(darkestSecret);
 
             phoneBook.addContact(newContact);
