@@ -1,4 +1,6 @@
 #include "Contact.hpp"
+#include "../ex01/Contact.hpp"
+
 
 Contact::Contact() {}
 
@@ -52,10 +54,5 @@ void Contact::setDarkestSecret(const std::string &newDarkestSecret)
     darkest_secret = newDarkestSecret;
 }
 
-int Contact::getIndex() const {
-    return index;
-}
 
-void Contact::setIndex(int newindex) {
-    index = newindex;
-}
+

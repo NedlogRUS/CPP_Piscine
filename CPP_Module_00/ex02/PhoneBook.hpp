@@ -7,14 +7,14 @@ class PhoneBook
 {
 private:
     Contact contacts[8];
+    int contactCount;
 
 public:
     PhoneBook();
 
-    void startPB() const;
-    void addContact() const;
-//    void displayContacts() const;
-//    void displayContact(int index) const;
+    void addContact(const Contact &newContact);
+    void displayContacts() const;
+    void displayContact(int index) const;
 };
 
 #endif //CPP_PHONEBOOK_HPP
