@@ -56,6 +56,6 @@ int Contact::getIndex() const {
     return index;
 }
 
-void Contact::setIndex(int newindex) {
-    index = newindex;
+void Contact::setIndex(int newIndex) {
+    index = newIndex;
 }

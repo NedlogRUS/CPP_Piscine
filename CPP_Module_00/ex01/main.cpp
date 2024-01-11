@@ -11,7 +11,6 @@ using std::getline;
 int main()
 {
     PhoneBook PB;
-
     PB.startPB();
     while(1)
     {
@@ -21,10 +20,14 @@ int main()
 //        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     if (command == "ADD")
         PB.addContact();
+    else if (command == "SEARCH")
+            PB.displayContacts();
     else if (command == "EXIT")
         {
             break;
         }
+    else
+        PB.startPB();
     }
     return 0;
 }

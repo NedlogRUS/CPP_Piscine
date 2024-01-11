@@ -12,8 +12,8 @@ public:
     PhoneBook();
 
     void startPB() const;
-    void addContact() const;
-//    void displayContacts() const;
+    void addContact();
+    void displayContacts() const;
 //    void displayContact(int index) const;
 };
 
