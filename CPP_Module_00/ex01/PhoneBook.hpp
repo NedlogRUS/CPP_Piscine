@@ -7,6 +7,8 @@ class PhoneBook
 {
 private:
     Contact contacts[8];
+    int contactCount;
+    int count2;
 
 public:
     PhoneBook();
@@ -14,6 +16,7 @@ public:
     void startPB() const;
     void addContact();
     void displayContacts() const;
+
 //    void displayContact(int index) const;
 };
 

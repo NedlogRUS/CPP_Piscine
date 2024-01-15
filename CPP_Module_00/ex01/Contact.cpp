@@ -1,6 +1,6 @@
 #include "Contact.hpp"
 
-Contact::Contact() {}
+Contact::Contact() : lastest(false) {}
 
 std::string Contact::getFirstName() const
 {
@@ -52,10 +52,10 @@ void Contact::setDarkestSecret(const std::string &newDarkestSecret)
     darkest_secret = newDarkestSecret;
 }
 
-int Contact::getIndex() const {
-    return index;
+bool Contact::getLastest() const {
+    return lastest;
 }
 
-void Contact::setIndex(int newIndex) {
-    index = newIndex;
+void Contact::setLastest(bool newLastest) {
+    lastest = newLastest;
 }
