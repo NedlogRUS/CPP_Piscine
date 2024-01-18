@@ -15,9 +15,10 @@ public:
 
     void startPB() const;
     void addContact();
+    void addContact2(int i);
     void displayContacts() const;
-
-//    void displayContact(int index) const;
+    static std::string truncateString(const std::string& str, size_t maxLength);
+    void displayContact() const;
 };
 
 #endif //CPP_PHONEBOOK_HPP
