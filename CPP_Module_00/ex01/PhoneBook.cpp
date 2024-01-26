@@ -1,6 +1,8 @@
 #include "PhoneBook.hpp"
 #include <iostream>
 #include <iomanip>
+#include <limits>
+#include <string>
 
 using std::cout;
 using std::cin;
@@ -86,25 +88,63 @@ std::string PhoneBook::truncateString(const std::string& str, size_t maxLength) 
     }
 }
 
+
 void PhoneBook::displayContact() const
 {
     std::cout << "Enter index: ";
     int index;
-    if (std::cin >> index) {
-        index--;
+    std::string userInput;
+    std::getline(std::cin, userInput);
+
+    // Check if the input contains only digits
+    bool isValidInput = true;
+    for (size_t i = 0; i < userInput.length(); ++i) {
+        if (!isdigit(userInput[i])) {
+            isValidInput = false;
+            break;
+        }
+    }
+
+    if (isValidInput) {
+        index = atoi(userInput.c_str()); // Convert string to integer
+        index--; // Adjust index to match array index
+
         if (index >= 0 && index < contactCount) {
             std::cout << "First Name: " << contacts[index].getFirstName() << std::endl;
             std::cout << "Last Name: " << contacts[index].getLastName() << std::endl;
             std::cout << "Nickname: " << contacts[index].getNickname() << std::endl;
             std::cout << "Phone Number: " << contacts[index].getPhoneNumber() << std::endl;
             std::cout << "Darkest Secret: " << contacts[index].getDarkestSecret() << std::endl;
+            PhoneBook::startPB();
         } else {
             std::cout << "ERROR: Invalid index." << std::endl;
+            PhoneBook::startPB();
         }
-    }
-    else {
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    } else {
         std::cout << "ERROR: Invalid index. Please enter an integer." << std::endl;
+        PhoneBook::startPB();
     }
 }
+
+//void PhoneBook::displayContact() const
+//{
+//    std::cout << "Enter index: ";
+//    int index;
+//    if (std::cin >> index) {
+//        index--;
+//        if (index >= 0 && index < contactCount) {
+//            std::cout << "First Name: " << contacts[index].getFirstName() << std::endl;
+//            std::cout << "Last Name: " << contacts[index].getLastName() << std::endl;
+//            std::cout << "Nickname: " << contacts[index].getNickname() << std::endl;
+//            std::cout << "Phone Number: " << contacts[index].getPhoneNumber() << std::endl;
+//            std::cout << "Darkest Secret: " << contacts[index].getDarkestSecret() << std::endl;
+//        } else {
+//            std::cout << "ERROR: Invalid index." << std::endl;
+//        }
+//    }
+//    else {
+//        std::cin.clear();
+//        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//        std::cout << "ERROR: Invalid index. Please enter an integer." << std::endl;
+//    }
+//}
