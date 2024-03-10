@@ -14,8 +14,8 @@ public:
     PhoneBook();
 
     void startPB() const;
-    void addContact();
-    void addContact2(int i);
+    int addContact();
+    int addContact2(int i);
     void displayContacts() const;
     static std::string truncateString(const std::string& str, size_t maxLength);
     void displayContact() const;

@@ -17,50 +17,60 @@ void PhoneBook::startPB() const
     cout << "Enter command (ADD, SEARCH, EXIT): " << endl;
 }
 
-void PhoneBook::addContact()
+int PhoneBook::addContact()
 {
     if(contactCount <= 7) {
-        PhoneBook::addContact2(contactCount);
+        if(PhoneBook::addContact2(contactCount))
+            return (1);
         contactCount++;
     }
     else if(count2 == 8)
     {
         count2 = 0;
-        PhoneBook::addContact2(count2);
+        if(PhoneBook::addContact2(count2))
+            return (1);
     }
     else
     {
-        PhoneBook::addContact2(count2);
+        if(PhoneBook::addContact2(count2))
+            return (1);
         count2++;
     }
+    return(0);
 }
 
-void PhoneBook::addContact2(int i)
+int PhoneBook::addContact2(int i)
 {
     cout << "Enter first name: ";
     string firstName;
-    cin >> firstName;
+    std::getline(cin, firstName);
+    if (cin.eof()) return (1);
     contacts[i].setFirstName(firstName);
 
     cout << "Enter last name: ";
     string lastName;
-    cin >> lastName;
+    std::getline(cin, lastName);
+    if (cin.eof()) return 1;
     contacts[i].setLastName(lastName);
 
     cout << "Enter nickname: ";
     string nickname;
-    cin >> nickname;
+    std::getline(cin, nickname);
+    if (cin.eof()) return 1;
     contacts[i].setNickname(nickname);
 
     cout << "Enter phone number: ";
     string phoneNumber;
-    cin >> phoneNumber;
+    std::getline(cin, phoneNumber);
+    if (cin.eof()) return 1;
     contacts[i].setPhoneNumber(phoneNumber);
 
     cout << "Enter darkest secret: ";
     string  darkestSecret;
     cin >> darkestSecret;
+    if (cin.eof()) return 1;
     contacts[i].setDarkestSecret(darkestSecret);
+    return(0);
 }
 
 void PhoneBook::displayContacts() const
@@ -88,15 +98,12 @@ std::string PhoneBook::truncateString(const std::string& str, size_t maxLength) 
     }
 }
 
-
 void PhoneBook::displayContact() const
 {
     std::cout << "Enter index: ";
     int index;
     std::string userInput;
     std::getline(std::cin, userInput);
-
-    // Check if the input contains only digits
     bool isValidInput = true;
     for (size_t i = 0; i < userInput.length(); ++i) {
         if (!isdigit(userInput[i])) {
@@ -104,10 +111,9 @@ void PhoneBook::displayContact() const
             break;
         }
     }
-
     if (isValidInput) {
-        index = atoi(userInput.c_str()); // Convert string to integer
-        index--; // Adjust index to match array index
+        index = atoi(userInput.c_str());
+        index--;
 
         if (index >= 0 && index < contactCount) {
             std::cout << "First Name: " << contacts[index].getFirstName() << std::endl;
@@ -125,26 +131,3 @@ void PhoneBook::displayContact() const
         PhoneBook::startPB();
     }
 }
-
-//void PhoneBook::displayContact() const
-//{
-//    std::cout << "Enter index: ";
-//    int index;
-//    if (std::cin >> index) {
-//        index--;
-//        if (index >= 0 && index < contactCount) {
-//            std::cout << "First Name: " << contacts[index].getFirstName() << std::endl;
-//            std::cout << "Last Name: " << contacts[index].getLastName() << std::endl;
-//            std::cout << "Nickname: " << contacts[index].getNickname() << std::endl;
-//            std::cout << "Phone Number: " << contacts[index].getPhoneNumber() << std::endl;
-//            std::cout << "Darkest Secret: " << contacts[index].getDarkestSecret() << std::endl;
-//        } else {
-//            std::cout << "ERROR: Invalid index." << std::endl;
-//        }
-//    }
-//    else {
-//        std::cin.clear();
-//        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-//        std::cout << "ERROR: Invalid index. Please enter an integer." << std::endl;
-//    }
-//}

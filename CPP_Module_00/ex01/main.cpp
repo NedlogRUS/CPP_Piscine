@@ -18,14 +18,18 @@ int main()
 //        cin >> command;
         getline(cin, command);
 //        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    if (command == "ADD")
-        PB.addContact();
+    if (command == "ADD"){
+        if(PB.addContact())
+            return (1);
+        }
     else if (command == "SEARCH")
             PB.displayContacts();
     else if (command == "EXIT")
         {
             break;
         }
+    else if (cin.eof())
+        return 1;
     else
         PB.startPB();
     }

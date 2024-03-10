@@ -22,7 +22,6 @@ clean:
 	@$(RM) $(OBJS)
 	@tput setaf 928 && printf "🧹cleaning sucsessfull\n"
 	@tput setaf 255
-
 fclean: clean
 	@$(RM) $(NAME)
 
