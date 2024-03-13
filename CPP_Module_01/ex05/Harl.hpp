@@ -8,6 +8,7 @@ using std::cout;
 using std::endl;
 
 class Harl {
+private:
     void    debug(void);
     void    info(void);
     void    warning(void);
