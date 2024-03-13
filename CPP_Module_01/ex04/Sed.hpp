@@ -5,17 +5,22 @@
 #include <fstream>
 #include <string>
 
+using std::cout;
+using std::endl;
+using std::string;
+using std::cerr;
+
 class Sed {
 private:
-    std::string _filename;
-    std::string _s1;
-    std::string _s2;
-    std::string _text;
+    string _filename;
+    string _s1;
+    string _s2;
+    string _text;
 
 public:
-    Sed(const std::string& filename, const std::string& s1, const std::string& s2);
+    Sed(const string& filename, const string& s1, const string& s2);
     ~Sed();
-    bool checkarg();
+    bool checkArg();
     bool readFile();
     void replace();
     bool writeFile();
