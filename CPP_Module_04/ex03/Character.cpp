@@ -1,5 +1,23 @@
 #include "Character.hpp"
 
+AMateria *FLOOR[2];
+int FLOOR_COUNT = 0;
+
+void dropMateria(AMateria *m) {
+    if (FLOOR_COUNT >= 2) {
+        cout << "materias are dessapeared from floor" << endl;
+        for (int i = 0; i < 2; i++) {
+            FLOOR[i] = NULL;
+        }
+        FLOOR_COUNT = 0;
+    }
+    if (FLOOR_COUNT < 2) {
+        cout << "materia is dropped on the floor" << endl;
+        FLOOR[FLOOR_COUNT] = m;
+        FLOOR_COUNT++;
+    }
+}
+
 Character::Character() : name("default"){
     cout << "Character default constructor called" << endl;
     for (int i = 0; i < 4; i++)
@@ -54,8 +72,10 @@ void Character::equip(AMateria *m) {
 }
 
 void Character::unequip(int idx) {
-    if (idx >= 0 && idx < 4 && materias[idx])
+    if (idx >= 0 && idx < 4 && materias[idx]) {
+        dropMateria(materias[idx]);
         materias[idx] = NULL;
+    }
 }
 
 void Character::use(int idx, ICharacter &target) {
