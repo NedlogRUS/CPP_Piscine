@@ -4,14 +4,13 @@
 Form::Form() : _name("Default"), _signed(false), _signGrade(150), _execGrade(150) {
 }
 
-Form::Form(const string name, int signGrade, int execGrade) : _name(name), _signed(false) {
+Form::Form(const string name, int signGrade, int execGrade) : _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade) {
     if (signGrade < 1 || execGrade < 1) {
         throw GradeTooHighException();
-    } else if (signGrade > 150 || execGrade > 150) {
+    }
+    if (signGrade > 150 || execGrade > 150) {
         throw GradeTooLowException();
     }
-    _signGrade = signGrade;
-    _execGrade = execGrade;
 }
 
 Form::Form(const Form &obj) : _name(obj._name), _signed(obj._signed), _signGrade(obj._signGrade), _execGrade(obj._execGrade) {
@@ -22,8 +21,6 @@ Form &Form::operator = (const Form &obj) {
         return (*this);
     }
     _signed = obj._signed;
-    _signGrade = obj._signGrade;
-    _execGrade = obj._execGrade;
     return (*this);
 }
 

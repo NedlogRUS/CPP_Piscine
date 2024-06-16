@@ -11,8 +11,8 @@ class Form {
     private:
         const string _name;
         bool _signed;
-        int _signGrade;
-        int _execGrade;
+        int const _signGrade;
+        int const _execGrade;
     public:
         Form();
         Form(const string name, int signGrade, int execGrade);

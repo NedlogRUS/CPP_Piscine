@@ -8,22 +8,30 @@
 int main() {
     Intern intern;
     Bureaucrat bureaucrat("bureaucrat", 1);
+    AForm *form;
 
-    AForm *form1 = intern.makeForm("shrubbery creation", "target1");
-    AForm *form2 = intern.makeForm("robotomy request", "target2");
-    AForm *form3 = intern.makeForm("presidential pardon", "target3");
+    form = intern.makeForm("shrubbery creation", "target");
+    bureaucrat.signForm(*form);
+    bureaucrat.executeForm(*form);
+    delete form;
 
-    bureaucrat.signForm(*form1);
-    bureaucrat.executeForm(*form1);
+    form = intern.makeForm("robotomy request", "target");
+    bureaucrat.signForm(*form);
+    bureaucrat.executeForm(*form);
+    delete form;
 
-    bureaucrat.signForm(*form2);
-    bureaucrat.executeForm(*form2);
+    form = intern.makeForm("presidential pardon", "target");
+    bureaucrat.signForm(*form);
+    bureaucrat.executeForm(*form);
+    delete form;
 
-    bureaucrat.signForm(*form3);
-    bureaucrat.executeForm(*form3);
-
-    delete form1;
-    delete form2;
-    delete form3;
+    try {
+        form = intern.makeForm("nonexistent form", "target");
+        bureaucrat.signForm(*form);
+        bureaucrat.executeForm(*form);
+        delete form;
+    } catch (std::exception &e) {
+        std::cerr << e.what() << std::endl;
+    }
     return 0;
 }

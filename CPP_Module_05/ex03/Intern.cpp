@@ -28,7 +28,7 @@ Intern::~Intern() {
 }
 
 AForm	*Intern::makeForm(const string &formName, const string &target) {
-    string formNames[3] = {"robotomy request", "presidential pardon", "shrubbery creation"};
+    string formNames[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
     for (int i = 0; i < 3; i++) {
         if (formName == formNames[i]) {
             cout << "Intern creates " << formName << endl;
