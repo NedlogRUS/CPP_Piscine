@@ -1,9 +1,9 @@
 #include "ScalarConverter.hpp"
 
-int			ScalarConverter::_int = 0;
-double		ScalarConverter::_double = 0;
-float		ScalarConverter::_float = 0;
 char		ScalarConverter::_char = 0;
+int			ScalarConverter::_int = 0;
+float		ScalarConverter::_float = 0;
+double		ScalarConverter::_double = 0;
 
 ScalarConverter::ScalarConverter(){
 }
@@ -172,7 +172,7 @@ bool ScalarConverter::is_inf(std::string const &input){
         std::cout << "double: inf" << std::endl;
         return (true);
     }
-    else if (input == "-inf" || input == "-inff" || input == "-infinity" || input == "-infinityf")
+    else if (input == "-inf" || input == "-inff")
     {
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
