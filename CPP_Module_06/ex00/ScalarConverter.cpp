@@ -91,7 +91,6 @@ ScalarConverter::z_type ScalarConverter::parse(std::string const &input){
 void		ScalarConverter::print(z_type type){
     if (type == CHAR)
     {
-        std::cout << "*** CHEK CHAR *** " << std::endl;
         std::cout << "char: ";
         if (_char >= 32 && _char <= 126)
             std::cout << "'" << _char << "'" << std::endl;
@@ -105,7 +104,6 @@ void		ScalarConverter::print(z_type type){
     }
     else if (type == INT)
     {
-        std::cout << "*** CHEK INT *** " << std::endl;
         std::cout << "char: ";
         if (_int >= 32 && _int <= 126)
             std::cout << "'" << static_cast<char>(_int) << "'" << std::endl;
@@ -119,7 +117,6 @@ void		ScalarConverter::print(z_type type){
     }
     else if (type == FLOAT)
     {
-        std::cout << "*** CHEK FLOAT *** " << std::endl;
         std::cout << "char: ";
         if (_float >= 32 && _float <= 126)
             std::cout << "'" << static_cast<char>(_float) << "'" << std::endl;
@@ -143,7 +140,6 @@ void		ScalarConverter::print(z_type type){
     }
     else if (type == DOUBLE)
     {
-        std::cout << "*** CHEK DOUBLE *** " << std::endl;
         std::cout << "char: ";
         if (_double >= 32 && _double <= 126)
             std::cout << "'" << static_cast<char>(_double) << "'" << std::endl;
@@ -170,7 +166,6 @@ void		ScalarConverter::print(z_type type){
 bool ScalarConverter::is_inf(std::string const &input){
     if (input == "+inf" || input == "+inff" || input == "inf" || input == "inff")
     {
-        std::cout << "*** CHEK INF *** " << std::endl;
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
         std::cout << "float: inff" << std::endl;
@@ -179,7 +174,6 @@ bool ScalarConverter::is_inf(std::string const &input){
     }
     else if (input == "-inf" || input == "-inff" || input == "-infinity" || input == "-infinityf")
     {
-        std::cout << "*** CHEK INF *** " << std::endl;
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
         std::cout << "float: -inff" << std::endl;
@@ -188,7 +182,6 @@ bool ScalarConverter::is_inf(std::string const &input){
     }
     else if (input == "nan" || input == "nanf")
     {
-        std::cout << "*** CHEK NAN *** " << std::endl;
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
         std::cout << "float: nanf" << std::endl;
