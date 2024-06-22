@@ -6,7 +6,7 @@ HEADER		=	$(wildcard *.hpp)
 OBJS 		=	$(patsubst %.cpp, %.o, $(SRCS))
 RM 			= 	rm -fr
 
-all: $(NAME)
+all: $(NAME) run
 
 $(NAME): $(OBJS) Makefile
 	@$(CC) $(CPPFLAGS) $(SRCS) -o $(NAME)
@@ -18,6 +18,11 @@ $(NAME): $(OBJS) Makefile
 	@tput setaf 3 && printf "📝objective $(notdir $@) created\n"
 	@tput setaf 255
 
+prerun: $(NAME)
+	@./$(NAME)
+
+run : prerun fclean
+
 clean:
 	@$(RM) $(OBJS)
 	@tput setaf 928 && printf "🧹cleaning sucsessfull\n"
@@ -28,4 +33,4 @@ fclean: clean
 
 re:	fclean all
 
-.PHONY: all clean fclean re me bonus
+.PHONY: all clean fclean re me bonus run prerun
