@@ -45,7 +45,7 @@ struct limited {
     }
 };
 
-//int main() {
+//int generateJacobsthalSequence() {
 //    {
 //        limited in(30);
 //        const int count = 30; // Количество чисел для генерации
