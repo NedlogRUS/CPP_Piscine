@@ -14,40 +14,29 @@ int main(int argc, char *argv[]) {
     std::vector<int> vec;
     for (int i = 1; i < argc; ++i) {
         int num = std::atoi(argv[i]);
-        if (num <= 0) {
+        if (num < 0) {
             std::cerr << "Error: Invalid input. All numbers must be positive integers." << std::endl;
             return 1;
         }
         vec.push_back(num);
     }
 
-    if (vec.size() > 3000) {
-        std::cerr << "Error: Too many numbers. The maximum number of integers is 3000." << std::endl;
-        return 1;
-    }
-
     std::list<int> lst;
     for (int i = 1; i < argc; ++i) {
         int num = std::atoi(argv[i]);
-        if (num <= 0) {
+        if (num < 0) {
             std::cerr << "Error: Invalid input. All numbers must be positive integers." << std::endl;
             return 1;
         }
         lst.push_back(num);
     }
 
-    if (lst.size() > 3000) {
-        std::cerr << "Error: Too many numbers. The maximum number of integers is 3000." << std::endl;
-        return 1;
-    }
-
-    PmergeMe pmergeMe;
-
     std::cout << "Vector:" << std::endl;
-    pmergeMe.FordJonsonMergeInsortionSort(vec);
+    PmergeMe::FordJonsonMergeInsortionSort(vec);
 
     std::cout << "List:" << std::endl;
     PmergeMe::FordJonsonMergeInsortionSort(lst);
+
 //    template<class T>
 //    int sort_helper(T container) {
 //        return 0;
