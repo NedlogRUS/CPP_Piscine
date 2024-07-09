@@ -10,15 +10,11 @@
 class PmergeMe {
 private:
     template <typename T>
-    static void printContainer(const T& container);
-    template <typename T>
     static bool checkSize(const T &container);
     template <typename T>
     static bool checkDuplicates(const T &container);
     template <typename T>
     static bool checkSorted(const T &container);
-    template <typename T>
-    static void FordJonsonAlgorithm(T &container);
     template <typename T>
     static int checkIsOdd(T &container);
     template <typename T>
@@ -38,7 +34,10 @@ public:
 
     template <typename T>
     static void FordJonsonMergeInsortionSort(T &container);
-
+    template <typename T>
+    static void FordJonsonValidator(T &container);
+    template <typename T>
+    static void printContainer(const T& container);
 };
 
 struct jacobs {
@@ -212,26 +211,15 @@ int PmergeMe::BinarySearch(const T &container, int size, int pair) {
 }
 
 template <typename T>
-void PmergeMe::FordJonsonAlgorithm(T &container) {
+void PmergeMe::FordJonsonMergeInsortionSort(T &container) {
     if (container.size() == 0 || container.size() == 1) return;
-    std::cout << "Before:";/////
-    printContainer(container);////
     int odd = checkIsOdd(container);
-    std::cout << "Odd: " << odd << std::endl;////
-    std::cout << "After:";////
-    printContainer(container);////
     T less;
     T more;
     splitIntoPairs(container, less, more);
-    std::cout << "Less:";////
-    printContainer(less);////
-    std::cout << "More:";////
-    printContainer(more);////
-    FordJonsonAlgorithm(more);
+    FordJonsonMergeInsortionSort(more);
     std::vector<int> sequence;
     sequence = generateJacobsthalSequence(less.size());
-    std::cout << "Sequence:";////
-    printContainer(sequence);////
     for (size_t i = 0; i < sequence.size(); ++i) {
         int index = sequence[i];
         if (index < static_cast<int>(less.size())) {
@@ -243,21 +231,28 @@ void PmergeMe::FordJonsonAlgorithm(T &container) {
     if (odd != 0) {
         InsertByBinarySearch(odd, more);
     }
+    container.clear();
     container = more;
-    std::cout << "After inserting Less and Odd into More:";
-    printContainer(container);
 }
 
 template <typename T>
-void PmergeMe::FordJonsonMergeInsortionSort(T &container) {
+void PmergeMe::FordJonsonValidator(T &container) {
     if(container.size() < 2) {
-        std::cout << "Data is has only one element" << std::endl;
+        std::cerr << "Data is has only one element" << std::endl;
         exit(1);
     }
-    std::cout << "Finde duplicates: " << (checkDuplicates(container) ? "true" : "false") << std::endl;
-    std::cout << "Container is sorted: " << (checkSorted(container) ? "true" : "false") << std::endl;
-    std::cout << "Size is greater than 3000: " << (checkSize(container) ? "true" : "false") << std::endl;
-    FordJonsonAlgorithm(container);
+    if(checkDuplicates(container)) {
+        std::cerr << "Data has duplicates" << std::endl;
+        exit(1);
+    }
+    if(checkSorted(container)) {
+        std::cerr << "Data is already sorted" << std::endl;
+        exit(1);
+    }
+    if(checkSize(container)) {
+        std::cerr << "Size is greater than 3000" << std::endl;
+        exit(1);
+    }
 }
 
 #endif // PMERGEME_HPP
