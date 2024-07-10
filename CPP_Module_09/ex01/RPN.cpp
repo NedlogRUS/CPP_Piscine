@@ -17,7 +17,7 @@ bool RPN::isOperator(char c) {
     return c == '+' || c == '-' || c == '*' || c == '/';
 }
 
-int RPN::performOperation(int a, int b, char op) {
+double RPN::performOperation(double a, double b, char op) {
     switch (op) {
         case '+': return a + b;
         case '-': return a - b;
@@ -27,20 +27,20 @@ int RPN::performOperation(int a, int b, char op) {
     }
 }
 
-int RPN::evaluate(const std::string &expression) {
-    std::stack<int> stack;
+double RPN::evaluate(const std::string &expression) {
+    std::stack<double> stack;
     std::stringstream ss(expression);
     std::string token;
 
     while (ss >> token) {
         if (token.size() == 1 && isOperator(token[0])) {
             if (stack.size() < 2) throw std::runtime_error("Error");
-            int b = stack.top(); stack.pop();
-            int a = stack.top(); stack.pop();
-            int result = performOperation(a, b, token[0]);
+            double b = stack.top(); stack.pop();
+            double a = stack.top(); stack.pop();
+            double result = performOperation(a, b, token[0]);
             stack.push(result);
         } else {
-            int number;
+            double number;
             std::stringstream ss(token);
             if (!(ss >> number)) {
                 throw std::runtime_error("Invalid input");

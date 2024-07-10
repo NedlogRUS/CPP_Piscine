@@ -4,17 +4,18 @@
 #include <iostream>
 #include <stack>
 #include <sstream>
+#include <stdexcept>
 
 class RPN {
 private:
     bool isOperator(char c);
-    int performOperation(int a, int b, char op);
+    double performOperation(double a, double b, char op);
 public:
     RPN();
     RPN(const RPN &other);
     RPN &operator=(const RPN &other);
     ~RPN();
-    int evaluate(const std::string &expression);
+    double evaluate(const std::string &expression);
 };
 
 #endif //RPN_HPP
